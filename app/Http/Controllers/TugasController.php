@@ -9,9 +9,13 @@ class TugasController extends Controller
 {
     public function index()
     {
-        $tugas = Tugas::all();
+    $search = request('search');
 
-        return view('tugas', compact('tugas'));
+    $tugas = Tugas::when($search, function ($query, $search) {
+        return $query->where('nama_mahasiswa', 'like', "%{$search}%");
+    })->get();
+
+    return view('tugas', compact('tugas'));
     }
 
     public function upload(Request $request)

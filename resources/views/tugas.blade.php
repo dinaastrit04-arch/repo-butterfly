@@ -21,6 +21,13 @@
 
 <hr>
 
+<form method="GET" action="/">
+    <input type="text" name="search" placeholder="Cari nama mahasiswa">
+    <button type="submit">Cari</button>
+</form>
+
+<br>
+
 <h2>Daftar Tugas</h2>
 
 <table border="1" cellpadding="10">
