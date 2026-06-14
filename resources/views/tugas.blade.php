@@ -7,6 +7,14 @@
 
 <h1>Sistem Upload Tugas Kuliah</h1>
 
+@if ($errors->any())
+    <div>
+        @foreach ($errors->all() as $error)
+            <p>{{ $error }}</p>
+        @endforeach
+    </div>
+@endif
+
 <form action="/upload" method="POST" enctype="multipart/form-data">
     @csrf
 
