@@ -21,6 +21,11 @@ class TugasController extends Controller
 
     public function upload(Request $request)
     {
+        $request->validate([
+            'nama_mahasiswa' => 'required',
+            'file_tugas' => 'required|mimes:pdf,doc,docx|max:2048'
+        ]);
+
         $file = $request->file('file_tugas');
 
         $namaFile = time().'_'.$file->getClientOriginalName();
@@ -34,6 +39,7 @@ class TugasController extends Controller
 
         return redirect('/');
     }
+
     public function download($id)
     {
         $tugas = Tugas::findOrFail($id);
