@@ -32,16 +32,28 @@
 
 <table border="1" cellpadding="10">
     <tr>
-        <th>Nama Mahasiswa</th>
-        <th>File</th>
-    </tr>
+    <th>Nama Mahasiswa</th>
+    <th>File</th>
+    <th>Aksi</th>
+</tr>
 
-    @foreach($tugas as $item)
+   @foreach($tugas as $item)
     <tr>
         <td>{{ $item->nama_mahasiswa }}</td>
         <td>{{ $item->nama_file }}</td>
+        <td>
+        <a href="/download/{{ $item->id }}">
+            Download
+        </a>
+
+        <form action="/hapus/{{ $item->id }}" method="POST" style="display:inline;">
+            @csrf
+            @method('DELETE')
+            <button type="submit">Hapus</button>
+        </form>
+    </td>
     </tr>
-    @endforeach
+@endforeach
 
 </table>
 
